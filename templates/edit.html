@@ -12,6 +12,21 @@
 	   <p align=center>
 	   <form method="POST" action="/publish" enctypwe="multipart/form-data">
 		   <table>
+			   <tr>
+				   <td>
+					<label for="language-select">Choose a language:</label>
+
+					<select name="lang" id="language-select">
+						<option value="">--Please choose an option--</option>
+						<option value="php">PHP</option>
+						<option value="python">Python</option>
+						<option value="C">C</option>
+						<option value="javascript">Javascript</option>
+						<option value="C++">C++</option>
+						<option value="C#">C#</option>
+					</select>
+				   </td>
+			   </tr>
 		    <tr>
 		     <td>
 		      <textarea name="code" rows=20 cols=100>{{ code }}</textarea><br/>

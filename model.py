@@ -23,6 +23,17 @@ def save_doc_as_file(uid=None,code=None):
         fd.write(code)
     return uid
 
+def save_doc_as_file_as_lang(uid=None,lang=None):
+    '''Crée/Enregistre le document sous la forme d'un fichier
+    data/uid. Return the file name.
+    '''
+    if uid is None:
+        uid = create_uid()
+        lang = '# Write your lang here...'
+    with open('data/{}'.format(uid)+'.lang','w') as fd:
+        fd.write(lang)
+    return uid
+
 def read_doc_as_file(uid):
     '''Lit le document data/uid'''
     try:

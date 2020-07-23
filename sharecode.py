@@ -4,6 +4,7 @@ from flask import Flask, request, render_template, \
                   redirect
 
 from model import save_doc_as_file, \
+                  save_doc_as_file_as_lang, \
                   read_doc_as_file, \
                   get_last_entries_from_files
 
@@ -33,7 +34,9 @@ def edit(uid):
 def publish():
     code = request.form['code']
     uid  = request.form['uid']
+    lang = request.form['lang']
     save_doc_as_file(uid,code)
+    save_doc_as_file_as_lang(uid,lang)
     return redirect("{}{}/{}".format(request.host_url,
                                      request.form['submit'],
                                      uid))
