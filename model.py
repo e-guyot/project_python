@@ -29,7 +29,7 @@ def save_doc_as_file_as_lang(uid=None,lang=None):
     '''
     if uid is None:
         uid = create_uid()
-        lang = '# Write your lang here...'
+        lang = ''
     with open('data/{}'.format(uid)+'.lang','w') as fd:
         fd.write(lang)
     return uid

@@ -18,8 +18,10 @@
 
 					<select name="lang" id="language-select">
 						<option value="">--Please choose an option--</option>
-						<option value="php">PHP</option>
-						<option value="python">Python</option>
+						<option value = 'php' {% if langage == 'php' %} selected {% endif %} >PHP</option>
+						<option value = 'python' {% if langage == 'python' %} selected {% endif %} >python</option>
+						<option value = 'C' {% if langage == 'C' %} selected {% endif %} >C</option>
+						<option value = 'javascript' {% if langage == 'javascript' %} selected {% endif %} >javascript</option>
 						<option value="C">C</option>
 						<option value="javascript">Javascript</option>
 						<option value="C++">C++</option>
