@@ -19,7 +19,6 @@ from model_sqlite_users import save_user
 
 app = Flask(__name__)
 
-# ipExterne = urllib.urlopen("http://www.whatismyip.org").readline()
 
 @app.route('/')
 def index():
@@ -69,7 +68,8 @@ def view(uid):
 
 @app.route('/admin/')
 def admin():
-    pass
+    user= totoip
+    return render_template('admin.html’, user)
 
 if __name__ == '__main__':
     app.run()
