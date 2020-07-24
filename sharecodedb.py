@@ -11,8 +11,6 @@ from model_sqlite import get_last_code_bdd, \
 
 app = Flask(__name__)
 
-# ipExterne = urllib.urlopen("http://www.whatismyip.org").readline()
-
 @app.route('/')
 def index():
     #d = { 'last_added':[ { 'uid':'testuid', 'code':'testcode' } ] }
@@ -28,7 +26,6 @@ def create():
 def edit(uid):
     code = get_code(uid)
     lang = get_lang(uid)
-    print(code)
     if code is None:
         return render_template('error.html',uid=uid)
     d = dict( uid=uid, code=code, lang=lang,
@@ -40,7 +37,6 @@ def publish():
     code = request.form['code']
     uid  = request.form['uid']
     lang = request.form['lang']
-    print(code)
     update_code(uid,code,lang)
     return redirect("{}{}/{}".format(request.host_url,
                                      request.form['submit'],

@@ -50,12 +50,8 @@ def update_code(uid=None,code=None,lang=None):
         lang = ''
     conn = connect("bdd/tab_codes.db")
     cur = conn.cursor()
-    print(code)
     cur.execute("UPDATE codes SET code = '"+code+"', lang = '"+lang+"' where id = '"+uid+"'")
     conn.commit()
     cur.close()
     conn.close()
     return uid
-
-
-print(get_last_code_bdd())
