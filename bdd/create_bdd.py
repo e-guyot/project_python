@@ -4,7 +4,7 @@ from sqlite3 import *
 
 conn = connect("bdd/tab_codes.db")
 cur = conn.cursor()
-cur.execute("CREATE TABLE code (id VARCHAR(20) PRIMARY KEY NOT NULL, code TEXT NOT NULL, lang TEXT)")
+cur.execute("CREATE TABLE codes (id VARCHAR(20) PRIMARY KEY NOT NULL, code TEXT NOT NULL, lang TEXT)")
 conn.commit()
 cur.close()
 conn.close()
@@ -14,7 +14,7 @@ conn.close()
 
 conn = connect("bdd/tab_users.db")
 cur = conn.cursor()
-cur.execute("CREATE TABLE users (id VARCHAR(20) PRIMARY KEY NOT NULL, ip_adress TEXT NOT NULL, naviguateur text, date TIMESTAMP)") 
+cur.execute("CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, ip_adress TEXT NOT NULL, naviguateur text, date TIMESTAMP)") 
 conn.commit()
 cur.close()
 conn.close()

@@ -4,6 +4,8 @@ from model import create_uid
 
 from sqlite3 import *
 
+# tab_codes
+
 def get_last_code_bdd():
     conn = connect("bdd/tab_codes.db")
     cur = conn.cursor()
@@ -56,6 +58,3 @@ def update_code(uid=None,code=None,lang=None):
     cur.close()
     conn.close()
     return uid
-
-
-print(get_last_code_bdd())

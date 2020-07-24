@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+from datetime import datetime
+
+from socket import socket
+
+import os
+
 from flask import Flask, request, render_template, \
                   redirect
 
@@ -8,6 +14,8 @@ from model_sqlite import get_last_code_bdd, \
                          get_code, \
                          get_lang, \
                          update_code
+
+from model_sqlite_users import save_user
 
 app = Flask(__name__)
 
@@ -28,7 +36,12 @@ def create():
 def edit(uid):
     code = get_code(uid)
     lang = get_lang(uid)
-    print(code)
+    # current date and time
+    date = datetime.now()
+    ip = os.system('hostname -i')
+    navigateur = request.headers.get('User-Agent')
+
+    user = save_user(ip, navigateur, date)
     if code is None:
         return render_template('error.html',uid=uid)
     d = dict( uid=uid, code=code, lang=lang,
@@ -40,7 +53,6 @@ def publish():
     code = request.form['code']
     uid  = request.form['uid']
     lang = request.form['lang']
-    print(code)
     update_code(uid,code,lang)
     return redirect("{}{}/{}".format(request.host_url,
                                      request.form['submit'],
