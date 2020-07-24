@@ -15,6 +15,8 @@ from model_sqlite_users import save_user, \
                                get_ip_users, \
                                get_all_users
 
+from sharecode_pygment import showfile
+
 app = Flask(__name__)
 
 
@@ -22,6 +24,7 @@ app = Flask(__name__)
 def index():
     #d = { 'last_added':[ { 'uid':'testuid', 'code':'testcode' } ] }
     d = { 'last_added': get_last_code_bdd() }
+    show_file(model.py)
     return render_template('index.html',**d)
 
 @app.route('/create')

@@ -30,4 +30,5 @@ Ajout du template admin.html
 # Partie 4 : colorisation de code
 
 
-Ajout du fichier functions
+
+PS : voir branche develop_partie3 
