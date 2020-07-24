@@ -2,10 +2,6 @@
 
 from datetime import datetime
 
-from socket import socket
-
-import os
-
 from flask import Flask, request, render_template, \
                   redirect
 
@@ -15,7 +11,9 @@ from model_sqlite import get_last_code_bdd, \
                          get_lang, \
                          update_code
 
-from model_sqlite_users import save_user
+from model_sqlite_users import save_user, \
+                               get_ip_users, \
+                               get_all_users
 
 app = Flask(__name__)
 
@@ -23,7 +21,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     #d = { 'last_added':[ { 'uid':'testuid', 'code':'testcode' } ] }
-    d = { 'last_added':get_last_code_bdd() }
+    d = { 'last_added': get_last_code_bdd() }
     return render_template('index.html',**d)
 
 @app.route('/create')
@@ -37,10 +35,10 @@ def edit(uid):
     lang = get_lang(uid)
     # current date and time
     date = datetime.now()
-    ip = os.system('hostname -i')
-    navigateur = request.headers.get('User-Agent')
+    ip = request.remote_addr
+    user_agent = str(request.user_agent)
 
-    user = save_user(ip, navigateur, date)
+    user = save_user(ip, user_agent, date)
     if code is None:
         return render_template('error.html',uid=uid)
     d = dict( uid=uid, code=code, lang=lang,
@@ -68,8 +66,8 @@ def view(uid):
 
 @app.route('/admin/')
 def admin():
-    user= totoip
-    return render_template('admin.html’, user)
+    d = { 'last_added':get_all_users() }
+    return render_template('admin.html', **d)
 
 if __name__ == '__main__':
     app.run()

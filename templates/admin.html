@@ -1,0 +1,16 @@
+<html>
+   <head>
+	   <title>Code Share: Share your codes!</title>
+   </head>
+   <body>
+	   <h1>Code Share: Share your codes!</h1>
+       <p><a href="/">Home</a></p>
+        {% if last_added %}
+        {% for entry in last_added %}
+        <p>Adresse ip : {{ entry[1] }}</p>
+        <p>User-agent : {{ entry[2] }}</p>
+        <p>date : {{ entry[3] }}</p>
+        {% endfor %}
+        {% endif %}
+   </body>
+</html>

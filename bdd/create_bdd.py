@@ -14,7 +14,7 @@ conn.close()
 
 conn = connect("bdd/tab_users.db")
 cur = conn.cursor()
-cur.execute("CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, ip_adress TEXT NOT NULL, naviguateur text, date TIMESTAMP)") 
+cur.execute("CREATE TABLE users (id_user INTEGER PRIMARY KEY AUTOINCREMENT, ip_adress VARCHAR(20) NOT NULL, naviguateur text, date TIMESTAMP)") 
 conn.commit()
 cur.close()
 conn.close()
