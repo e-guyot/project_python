@@ -11,6 +11,8 @@ from model_sqlite import get_last_code_bdd, \
 
 app = Flask(__name__)
 
+# ipExterne = urllib.urlopen("http://www.whatismyip.org").readline()
+
 @app.route('/')
 def index():
     #d = { 'last_added':[ { 'uid':'testuid', 'code':'testcode' } ] }

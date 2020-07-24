@@ -4,14 +4,8 @@ from model import create_uid
 
 from sqlite3 import *
 
-# cur.execute("CREATE TABLE users (id VARCHAR(20) PRIMARY KEY NOT NULL, ip_adress TEXT NOT NULL, naviguateur text, date TIMESTAMP)") 
-
-#cur.execute("INSERT INTO codes(id, code, lang) VALUES('"uid"', 'test ','python')")
-
-
-
 def get_last_code_bdd():
-    conn = connect("tab_codes.txt")
+    conn = connect("bdd/tab_codes.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM codes")
     d = cur.fetchall()
@@ -21,7 +15,7 @@ def get_last_code_bdd():
 
 def save_bdd():
     uid = create_uid()
-    conn = connect("tab_codes.txt")
+    conn = connect("bdd/tab_codes.db")
     cur = conn.cursor()
     code = '# Write your code here...'
     lang = ''
@@ -32,7 +26,7 @@ def save_bdd():
     return uid
 
 def get_code(uid):
-    conn = connect("tab_codes.txt")
+    conn = connect("bdd/tab_codes.db")
     cur = conn.cursor()
     cur.execute("SELECT code FROM codes where id = '"+uid+"'")
     d = cur.fetchone()
@@ -41,7 +35,7 @@ def get_code(uid):
     return d[0]
 
 def get_lang(uid):
-    conn = connect("tab_codes.txt")
+    conn = connect("bdd/tab_codes.db")
     cur = conn.cursor()
     cur.execute("SELECT lang FROM codes where id = '"+uid+"'")
     d = cur.fetchone()
@@ -54,7 +48,7 @@ def update_code(uid=None,code=None,lang=None):
         uid = create_uid()
         code = '# Write your lang here...'
         lang = ''
-    conn = connect("tab_codes.txt")
+    conn = connect("bdd/tab_codes.db")
     cur = conn.cursor()
     print(code)
     cur.execute("UPDATE codes SET code = '"+code+"', lang = '"+lang+"' where id = '"+uid+"'")
