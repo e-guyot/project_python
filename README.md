@@ -29,7 +29,8 @@ Ajout du template admin.html
 
 # Partie 4 : colorisation de code
 
-
-Ajout du fichier functions
+``` pip install Pygments ``` 
+installer pygments
+Ajout du fichier functions 
 
 PS : voir develop_partie3 (version qui fonctionne le mieux)
